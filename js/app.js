@@ -12,29 +12,23 @@ import {
   getDoc
 } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
-alert("app.js loaded");
-
-/* -------------------------
-   GLOBAL STATE
---------------------------*/
-let confirmationResult;
+console.log("app.js loaded");
 
 /* -------------------------
    RECAPTCHA SETUP
 --------------------------*/
 window.recaptchaVerifier = new RecaptchaVerifier(
+  auth,
   "recaptcha-container",
-  { size: "invisible" },
-  auth
+  {
+    size: "invisible"
+  }
 );
 
 /* -------------------------
    SEND OTP
 --------------------------*/
 window.sendOTP = async function () {
-
-alert("Send OTP button clicked");
-
   const phone = document.getElementById("phone").value;
 
   if (!phone) {
@@ -43,27 +37,24 @@ alert("Send OTP button clicked");
   }
 
   try {
-    confirmationResult = await signInWithPhoneNumber(
+    window.confirmationResult = await signInWithPhoneNumber(
       auth,
       phone,
       window.recaptchaVerifier
     );
 
-    window.confirmationResult = confirmationResult;
-
     alert("OTP sent successfully 🚀");
 
-  }  catch (err) {
+  } catch (err) {
     console.error("SEND OTP ERROR:", err);
-    alert("SEND OTP ERROR: " + err.message);
-}
+    alert(err.message);
+  }
 };
 
 /* -------------------------
    VERIFY OTP
 --------------------------*/
 window.verifyOTP = async function () {
-
   const code = document.getElementById("otp").value;
 
   if (!code) {
@@ -71,14 +62,17 @@ window.verifyOTP = async function () {
     return;
   }
 
+  if (!window.confirmationResult) {
+    alert("Pehle OTP send karo");
+    return;
+  }
+
   try {
     const result = await window.confirmationResult.confirm(code);
-
     const user = result.user;
 
     console.log("Logged in:", user.uid);
 
-    // check if profile exists
     const ref = doc(db, "students", user.uid);
     const snap = await getDoc(ref);
 
@@ -89,16 +83,15 @@ window.verifyOTP = async function () {
     }
 
   } catch (err) {
-  console.error("OTP ERROR:", err);
-  alert("OTP Error: " + err.message);
-}
+    console.error("OTP ERROR:", err);
+    alert(err.message);
+  }
 };
 
 /* -------------------------
    SAVE PROFILE
 --------------------------*/
 window.saveProfile = async function () {
-
   const user = auth.currentUser;
 
   if (!user) {
@@ -106,6 +99,47 @@ window.saveProfile = async function () {
     return;
   }
 
+  const data = {
+    name: document.getElementById("name")?.value || "",
+    father: document.getElementById("father")?.value || "",
+    studentMobile: document.getElementById("studentMobile")?.value || "",
+    parentMobile: document.getElementById("parentMobile")?.value || "",
+    className: document.getElementById("class")?.value || "",
+    school: document.getElementById("school")?.value || "",
+    address: document.getElementById("address")?.value || "",
+    course: document.getElementById("course")?.value || "",
+    role: "student",
+    createdAt: new Date()
+  };
+
+  try {
+    await setDoc(doc(db, "students", user.uid), data);
+
+    alert("Profile saved 🚀");
+
+    window.location.href = "dashboard.html";
+
+  } catch (err) {
+    console.error(err);
+    alert("Error saving profile");
+  }
+};
+
+/* -------------------------
+   AUTH PROTECTION
+--------------------------*/
+onAuthStateChanged(auth, (user) => {
+  const path = window.location.pathname;
+
+  if (!user) {
+    if (path.includes("dashboard") || path.includes("profile")) {
+      window.location.href = "index.html";
+    }
+    return;
+  }
+
+  console.log("User active:", user.uid);
+});
   const data = {
     name: document.getElementById("name").value,
     father: document.getElementById("father").value,
