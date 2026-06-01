@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Profile | SUCCESS COACHING CENTRE</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+.profile-box{
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid #00f0ff;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.profile-box h2{
+  text-align: center;
+  color: #00f0ff;
+  text-shadow: 0 0 10px #00f0ff;
+}
+
+.profile-box input, select{
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  background: transparent;
+  border: 1px solid #00f0ff;
+  color: white;
+  outline: none;
+  border-radius: 6px;
+}
+
+button{
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background: #00f0ff;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover{
+  box-shadow: 0 0 15px #00f0ff;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <a href="dashboard.html">Dashboard</a>
+  <a href="tests.html">Tests</a>
+  <a href="notes.html">Notes</a>
+  <a href="profile.html">Profile</a>
+  <a href="results.html">Results</a>
+  <a href="leaderboard.html">Leaderboard</a>
+  <a href="admin.html">Admin</a>
+</div>
+
+<!-- PROFILE FORM -->
+<div class="profile-box">
+
+  <h2>Student Profile Setup</h2>
+
+  <input id="name" placeholder="Full Name">
+  <input id="father" placeholder="Father Name">
+  <input id="studentMobile" placeholder="Student Mobile Number">
+  <input id="parentMobile" placeholder="Parent Mobile Number">
+
+  <input id="class" placeholder="Class (e.g. 10, 11, 12)">
+  <input id="school" placeholder="School Name">
+  <input id="address" placeholder="Address">
+
+  <select id="course">
+    <option value="">Select Course</option>
+    <option value="NVS">NVS</option>
+    <option value="Sainik">Sainik School</option>
+    <option value="CHS">CHS</option>
+  </select>
+
+  <button onclick="saveProfile()">Save Profile</button>
+
+</div>
+
+<!-- FIREBASE -->
+<script type="module" src="firebase-config.js"></script>
+<script type="module" src="app.js"></script>
+
+</body>
+</html>

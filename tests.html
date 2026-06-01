@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tests | SUCCESS COACHING CENTRE</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+.test-box{
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid #00f0ff;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.question{
+  margin: 15px 0;
+  padding: 10px;
+  border-bottom: 1px solid rgba(0,255,255,0.2);
+}
+
+.option{
+  display: block;
+  margin: 5px 0;
+  padding: 8px;
+  border: 1px solid #00f0ff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.option:hover{
+  background: #00f0ff;
+  color: black;
+}
+
+.timer{
+  text-align: right;
+  color: #ff00ff;
+  font-weight: bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <a href="dashboard.html">Dashboard</a>
+  <a href="tests.html">Tests</a>
+  <a href="notes.html">Notes</a>
+  <a href="profile.html">Profile</a>
+  <a href="results.html">Results</a>
+  <a href="leaderboard.html">Leaderboard</a>
+  <a href="admin.html">Admin</a>
+</div>
+
+<!-- TEST AREA -->
+<div class="test-box">
+
+  <h2>🧪 Online Test System</h2>
+
+  <div class="timer">
+    Time Left: <span id="time">30:00</span>
+  </div>
+
+  <!-- QUESTION 1 -->
+  <div class="question">
+    <h3>1. Capital of India?</h3>
+
+    <label class="option">
+      <input type="radio" name="q1"> Mumbai
+    </label>
+
+    <label class="option">
+      <input type="radio" name="q1"> Delhi
+    </label>
+
+    <label class="option">
+      <input type="radio" name="q1"> Kolkata
+    </label>
+
+    <label class="option">
+      <input type="radio" name="q1"> Chennai
+    </label>
+  </div>
+
+  <!-- QUESTION 2 -->
+  <div class="question">
+    <h3>2. 2 + 2 = ?</h3>
+
+    <label class="option">
+      <input type="radio" name="q2"> 3
+    </label>
+
+    <label class="option">
+      <input type="radio" name="q2"> 4
+    </label>
+
+    <label class="option">
+      <input type="radio" name="q2"> 5
+    </label>
+
+    <label class="option">
+      <input type="radio" name="q2"> 6
+    </label>
+  </div>
+
+  <button onclick="submitTest()">Submit Test</button>
+
+</div>
+
+<!-- FIREBASE + APP -->
+<script type="module" src="firebase-config.js"></script>
+<script type="module" src="app.js"></script>
+
+<!-- TIMER SCRIPT -->
+<script>
+let time = 30 * 60;
+
+setInterval(() => {
+  let min = Math.floor(time / 60);
+  let sec = time % 60;
+
+  document.getElementById("time").innerText =
+    `${min}:${sec < 10 ? "0" + sec : sec}`;
+
+  time--;
+
+  if(time < 0){
+    alert("Time Over! Auto Submit");
+  }
+
+}, 1000);
+</script>
+
+</body>
+</html>

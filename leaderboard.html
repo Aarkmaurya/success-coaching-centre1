@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Leaderboard | SUCCESS COACHING CENTRE</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+.leaderboard-container{
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.rank-card{
+  background: rgba(255,255,255,0.05);
+  border: 1px solid #00f0ff;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.rank-card:hover{
+  box-shadow: 0 0 20px #00f0ff;
+  transform: scale(1.02);
+}
+
+.rank{
+  font-size: 22px;
+  font-weight: bold;
+  color: #ff00ff;
+}
+
+.name{
+  color: #00f0ff;
+  font-weight: bold;
+}
+
+.score{
+  color: white;
+}
+
+.top1{
+  border: 2px solid gold;
+  box-shadow: 0 0 15px gold;
+}
+
+.top2{
+  border: 2px solid silver;
+  box-shadow: 0 0 15px silver;
+}
+
+.top3{
+  border: 2px solid #cd7f32;
+  box-shadow: 0 0 15px #cd7f32;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <a href="dashboard.html">Dashboard</a>
+  <a href="tests.html">Tests</a>
+  <a href="notes.html">Notes</a>
+  <a href="profile.html">Profile</a>
+  <a href="results.html">Results</a>
+  <a href="leaderboard.html">Leaderboard</a>
+  <a href="admin.html">Admin</a>
+</div>
+
+<!-- LEADERBOARD -->
+<div class="leaderboard-container">
+
+  <h2>🏆 Top Students Ranking</h2>
+
+  <!-- TOP 1 -->
+  <div class="rank-card top1">
+    <div class="rank">#1</div>
+    <div class="name">Aman Yadav</div>
+    <div class="score">98%</div>
+  </div>
+
+  <!-- TOP 2 -->
+  <div class="rank-card top2">
+    <div class="rank">#2</div>
+    <div class="name">Rahul Singh</div>
+    <div class="score">95%</div>
+  </div>
+
+  <!-- TOP 3 -->
+  <div class="rank-card top3">
+    <div class="rank">#3</div>
+    <div class="name">Priya Sharma</div>
+    <div class="score">92%</div>
+  </div>
+
+  <!-- OTHER STUDENTS -->
+  <div class="rank-card">
+    <div class="rank">#4</div>
+    <div class="name">Student 4</div>
+    <div class="score">88%</div>
+  </div>
+
+  <div class="rank-card">
+    <div class="rank">#5</div>
+    <div class="name">Student 5</div>
+    <div class="score">85%</div>
+  </div>
+
+</div>
+
+<!-- FIREBASE -->
+<script type="module" src="firebase-config.js"></script>
+<script type="module" src="app.js"></script>
+
+</body>
+</html>

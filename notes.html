@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Notes | SUCCESS COACHING CENTRE</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+.notes-container{
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.note-card{
+  background: rgba(255,255,255,0.05);
+  border: 1px solid #00f0ff;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.note-title{
+  color: #00f0ff;
+  font-weight: bold;
+}
+
+.note-btn{
+  padding: 8px 12px;
+  background: #00f0ff;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.note-btn:hover{
+  box-shadow: 0 0 15px #00f0ff;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <a href="dashboard.html">Dashboard</a>
+  <a href="tests.html">Tests</a>
+  <a href="notes.html">Notes</a>
+  <a href="profile.html">Profile</a>
+  <a href="results.html">Results</a>
+  <a href="leaderboard.html">Leaderboard</a>
+  <a href="admin.html">Admin</a>
+</div>
+
+<!-- NOTES -->
+<div class="notes-container">
+
+  <h2>📚 Study Notes</h2>
+
+  <div class="note-card">
+    <div>
+      <div class="note-title">Class 10 Maths Chapter 1</div>
+      <small>Algebra Basics PDF</small>
+    </div>
+    <button class="note-btn">View</button>
+  </div>
+
+  <div class="note-card">
+    <div>
+      <div class="note-title">Science Physics Notes</div>
+      <small>Force & Motion</small>
+    </div>
+    <button class="note-btn">View</button>
+  </div>
+
+  <div class="note-card">
+    <div>
+      <div class="note-title">NVS Entrance Material</div>
+      <small>Important Questions</small>
+    </div>
+    <button class="note-btn">Download</button>
+  </div>
+
+  <div class="note-card">
+    <div>
+      <div class="note-title">Sainik School Guide</div>
+      <small>Full syllabus PDF</small>
+    </div>
+    <button class="note-btn">View</button>
+  </div>
+
+</div>
+
+<!-- FIREBASE -->
+<script type="module" src="firebase-config.js"></script>
+<script type="module" src="app.js"></script>
+
+</body>
+</html>

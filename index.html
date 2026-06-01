@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SUCCESS COACHING CENTRE</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+/* LOGIN SPECIAL UI */
+.login-box{
+  width: 90%;
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 20px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid #00f0ff;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 25px rgba(0,240,255,0.3);
+  text-align: center;
+}
+
+.login-box h1{
+  color: #00f0ff;
+  text-shadow: 0 0 10px #00f0ff;
+}
+
+input{
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  background: transparent;
+  border: 1px solid #00f0ff;
+  color: white;
+  outline: none;
+  border-radius: 6px;
+}
+
+button{
+  width: 95%;
+  padding: 10px;
+  margin: 10px 0;
+  background: #00f0ff;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+button:hover{
+  background: #00bcd4;
+  box-shadow: 0 0 15px #00f0ff;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="login-box">
+
+  <h1>SUCCESS COACHING CENTRE</h1>
+  <p>Cyberpunk Secure Login</p>
+
+  <!-- Firebase Recaptcha -->
+  <div id="recaptcha-container"></div>
+
+  <!-- PHONE LOGIN -->
+  <input type="text" id="phone" placeholder="Enter Mobile Number (+91xxxxxxxxxx)">
+
+  <button onclick="sendOTP()">Send OTP</button>
+
+  <!-- OTP INPUT -->
+  <input type="text" id="otp" placeholder="Enter OTP">
+
+  <button onclick="verifyOTP()">Verify OTP</button>
+
+</div>
+
+<!-- FIREBASE + APP -->
+<script type="module" src="firebase-config.js"></script>
+<script type="module" src="app.js"></script>
+
+</body>
+</html>
