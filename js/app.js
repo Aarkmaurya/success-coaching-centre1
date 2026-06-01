@@ -12,6 +12,8 @@ import {
   getDoc
 } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
+alert("app.js loaded");
+
 /* -------------------------
    GLOBAL STATE
 --------------------------*/
@@ -31,6 +33,8 @@ window.recaptchaVerifier = new RecaptchaVerifier(
 --------------------------*/
 window.sendOTP = async function () {
 
+alert("Send OTP button clicked");
+
   const phone = document.getElementById("phone").value;
 
   if (!phone) {
@@ -49,10 +53,10 @@ window.sendOTP = async function () {
 
     alert("OTP sent successfully 🚀");
 
-  } catch (err) {
-    console.log(err);
-    alert("OTP send failed");
-  }
+  }  catch (err) {
+    console.error("SEND OTP ERROR:", err);
+    alert("SEND OTP ERROR: " + err.message);
+}
 };
 
 /* -------------------------
@@ -85,9 +89,9 @@ window.verifyOTP = async function () {
     }
 
   } catch (err) {
-    console.log(err);
-    alert("Invalid OTP");
-  }
+  console.error("OTP ERROR:", err);
+  alert("OTP Error: " + err.message);
+}
 };
 
 /* -------------------------
@@ -106,6 +110,46 @@ window.saveProfile = async function () {
     name: document.getElementById("name").value,
     father: document.getElementById("father").value,
     studentMobile: document.getElementById("studentMobile").value,
+    parentMobile: document.getElementById("parentMobile").value,
+    class: document.getElementById("class").value,
+    school: document.getElementById("school").value,
+    address: document.getElementById("address").value,
+    course: document.getElementById("course").value,
+    role: "student",
+    createdAt: new Date()
+  };
+
+  try {
+    await setDoc(doc(db, "students", user.uid), data);
+
+    alert("Profile saved 🚀");
+
+    window.location.href = "dashboard.html";
+
+  } catch (err) {
+    console.log(err);
+    alert("Error saving profile");
+  }
+};
+
+/* -------------------------
+   AUTH PROTECTION (GLOBAL)
+--------------------------*/
+onAuthStateChanged(auth, async (user) => {
+
+  const path = window.location.pathname;
+
+  // if not logged in
+  if (!user) {
+    if (!path.includes("index.html") && path !== "/") {
+      window.location.href = "index.html";
+    }
+    return;
+  }
+
+  console.log("User active:", user.uid);
+
+});    studentMobile: document.getElementById("studentMobile").value,
     parentMobile: document.getElementById("parentMobile").value,
     class: document.getElementById("class").value,
     school: document.getElementById("school").value,
