@@ -1,0 +1,176 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #05060a;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* -------------------------
+   CYBER GRID BACKGROUND
+--------------------------*/
+body::before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(transparent 95%, rgba(0,255,255,0.06)),
+    linear-gradient(90deg, transparent 95%, rgba(255,0,255,0.06));
+  background-size: 50px 50px;
+  z-index: -1;
+  animation: gridMove 10s linear infinite;
+}
+
+@keyframes gridMove {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50px); }
+}
+
+/* -------------------------
+   NAVBAR
+--------------------------*/
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 15px;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #00f0ff;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: 0.3s;
+  border: 1px solid transparent;
+}
+
+.nav a:hover {
+  background: #00f0ff;
+  color: black;
+  box-shadow: 0 0 15px #00f0ff;
+}
+
+/* -------------------------
+   CONTAINER
+--------------------------*/
+.container {
+  padding: 20px;
+}
+
+/* -------------------------
+   CARDS (GLOBAL UI BLOCK)
+--------------------------*/
+.card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(0,255,255,0.3);
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px #00f0ff;
+}
+
+/* -------------------------
+   HEADINGS
+--------------------------*/
+h1, h2, h3 {
+  color: #00f0ff;
+  text-shadow: 0 0 10px rgba(0,240,255,0.5);
+}
+
+/* -------------------------
+   BUTTONS
+--------------------------*/
+button {
+  background: #00f0ff;
+  color: black;
+  border: none;
+  padding: 10px 15px;
+  margin: 5px 0;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+button:hover {
+  box-shadow: 0 0 15px #00f0ff;
+  transform: scale(1.05);
+}
+
+/* -------------------------
+   INPUT FIELDS
+--------------------------*/
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  background: transparent;
+  border: 1px solid #00f0ff;
+  color: white;
+  border-radius: 6px;
+  outline: none;
+}
+
+input:focus {
+  box-shadow: 0 0 10px #00f0ff;
+}
+
+/* -------------------------
+   LOGIN BOX SPECIAL
+--------------------------*/
+.login-box {
+  width: 90%;
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 20px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid #00f0ff;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  text-align: center;
+}
+
+/* -------------------------
+   GRID LAYOUT (DASHBOARD)
+--------------------------*/
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+/* -------------------------
+   ANIMATION ENTRY
+--------------------------*/
+.page-enter {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
